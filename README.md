@@ -7,6 +7,11 @@ Steps before class:
 - [ ] Run the server using `npm start` 
 - [ ] In a separate terminal `npm install cypress --save-dev`
 
+
+npm cypress open
+
+npx cypress run
+
 **This will install Cypress locally as a dev dependency for your project.**
 
 

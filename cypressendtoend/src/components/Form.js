@@ -142,7 +142,7 @@ export default function Form() {
         </select>
       </label>
       <label  htmlFor='terms' className='terms'>
-        <input
+        <input data-cy='agree'
           type='checkbox'
           name='terms'
           checked={formState.terms}

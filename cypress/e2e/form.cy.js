@@ -35,14 +35,14 @@ describe('form spec', () => {
             x.value = 'ffa';
           }else{
             if(x.value == 'ffa'){
-              return 0;
-            }
-            
-              cy.get('[data-cy="name"]').clear().type('ffa');
               cy.get('[data-cy="name"]').should("have.value","ffa");
-            
+            }
           }
           cy.get('[data-cy="name"]').should('not.be.disabled');
+          cy.get('[data-cy="name"]').clear();
+          cy.get('[data-cy="name"]').type('ffa');
+         
+          
         });
         cy.get('[data-cy="email"]').then((x)=>{
           if(x.value === undefined){
@@ -50,9 +50,9 @@ describe('form spec', () => {
           }else{
             cy.get('[data-cy="email"]').should("have.value","ffa@frogs.com"); 
           }
-          cy.get('[data-cy="email"]').clear();
-          cy.get('[data-cy="email"]').type('ffa@frogs.com');
           cy.get('[data-cy="email"]').should('not.be.disabled');
+          // cy.get('[data-cy="email"]').clear();
+          cy.get('[data-cy="email"]').type('ffa@frogs.com');
         });
         
         cy.get('[data-cy="motivation"]')
@@ -62,20 +62,25 @@ describe('form spec', () => {
           }else{
             cy.get('[data-cy="motivation"]').should("contain","I am motivated and know everything there is to know");
           }
+          cy.get('[data-cy="motivation"]').should('not.be.disabled');
+          cy.get('[data-cy="motivation"]').clear();
           cy.get('[data-cy="motivation"]').type("I am motivated and know everything there is to know");
+          
+          
         });
         cy.get('[data-cy="positions"]')
         .then((x)=>{
-          if(x.isSelected === false){
-            x.select('Yard Work');
+          if(x === undefined){
+            x.value = 'Yard Work';
           }
-          
-          
+            cy.get('[data-cy="positions"]').select('Yard Work');
         });
         cy.get('[data-cy="agree"]')
-          .then((x)=>{
-            x.checked =true;
-          })
+        .then((x)=>{
+          
+          cy.get('[data-cy="agree"]').checked = true;
+        })
+          
         cy.screenshot('my-project-img');
         cy.get('pre')
         .then((x)=>{

@@ -95,7 +95,7 @@ export default function Form() {
   };
 
   return (
-    <form onSubmit={formSubmit}>
+    <form data-cy='form' onSubmit={formSubmit}>
       <label  htmlFor='name'>
         Name
         <input data-cy="name"

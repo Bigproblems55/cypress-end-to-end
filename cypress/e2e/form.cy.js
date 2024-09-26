@@ -28,7 +28,7 @@ describe('form spec', () => {
         // cy.get('form').should('contain', 'Volunteer Sign Up')
         cy.get('[data-cy="name"]').type('ffa')
         cy.get('[data-cy="name"]').should("have.value","ffa");
-        cy.get('[data-cy="email"]').clear().type('ffa@frogs.com')
+        cy.get('[data-cy="email"]').clear().type('ffa@frogs.com');
         cy.get('[data-cy="email"]').should("have.value","ffa@frogs.com");    
         cy.get('[data-cy="motivation"]').clear().type('I am motivated and know everything there is to know')
         cy.get('[data-cy="motivation"]').should("have.value","I am motivated and know everything there is to know");

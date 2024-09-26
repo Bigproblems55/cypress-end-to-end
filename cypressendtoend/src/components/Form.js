@@ -96,9 +96,9 @@ export default function Form() {
 
   return (
     <form onSubmit={formSubmit}>
-      <label htmlFor='name'>
+      <label  htmlFor='name'>
         Name
-        <input
+        <input data-cy="name"
           type='text'
           name='name'
           value={formState.name}
@@ -108,7 +108,7 @@ export default function Form() {
       </label>
       <label htmlFor='email'>
         Email
-        <input
+        <input data-cy="email"
           type='text'
           name='email'
           value={formState.email}
@@ -118,9 +118,9 @@ export default function Form() {
           <p className='error'>{errors.email}</p>
         ) : null}
       </label>
-      <label htmlFor='motivation'>
+      <label  htmlFor='motivation'>
         Why would you like to help?
-        <textarea
+        <textarea data-cy="motivation"
           name='motivation'
           value={formState.motivation}
           onChange={inputChange}
@@ -129,16 +129,19 @@ export default function Form() {
           <p className='error'>{errors.motivation}</p>
         ) : null}
       </label>
-      <label htmlFor='positions'>
+      <label  htmlFor='positions'>
         What would you like to help with?
-        <select id='positions' name='positions' onChange={inputChange}>
+        <select data-cy="positions" 
+        id='positions' 
+        name='positions' 
+        onChange={inputChange}>
           <option value='Newsletter'>Newsletter</option>
           <option value='Yard Work'>Yard Work</option>
           <option value='Administrative Work'>Administrative Work</option>
           <option value='Tabling'>Tabling</option>
         </select>
       </label>
-      <label htmlFor='terms' className='terms'>
+      <label  htmlFor='terms' className='terms'>
         <input
           type='checkbox'
           name='terms'
@@ -149,7 +152,7 @@ export default function Form() {
       </label>
       {/* displaying our post request data */}
       <pre>{JSON.stringify(post, null, 2)}</pre>
-      <button disabled={buttonDisabled}>Submit</button>
+      <button data-cy="submitted"disabled={buttonDisabled}>Submit</button>
     </form>
   );
 }

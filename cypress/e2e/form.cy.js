@@ -32,7 +32,7 @@ describe('form spec', () => {
         // })
         cy.get('[data-cy="name"]').then((x)=>{
           if(x.value === undefined){
-            cy.get('[data-cy="name"]').clear(),{force:true};
+            cy.get('[data-cy="name"]').clear({force:true});
             x.value = 'ffa';
           }else{
             if(x.value == 'ffa'){
@@ -62,10 +62,10 @@ describe('form spec', () => {
           if(x.value === undefined){
             x.value = 'I am motivated and know everything there is to know';
           }else{
-            cy.get('[data-cy="motivation"]').should("contain","I am motivated and know everything there is to know");
+            cy.get('[data-cy="motivation"]').should("have.value","I am motivated and know everything there is to know");
           }
           cy.get('[data-cy="motivation"]').should('not.be.disabled');
-          cy.get('[data-cy="motivation"]').clear();
+          // cy.get('[data-cy="motivation"]').clear();
           cy.get('[data-cy="motivation"]').type("I am motivated and know everything there is to know",{force:true});
           
           
@@ -73,16 +73,17 @@ describe('form spec', () => {
         cy.get('[data-cy="positions"]')
         .then((x)=>{
           if(x === undefined){
-            x.value = 'Yard Work';
+            // x.value = 'Yard Work';
+            cy.get('[data-cy="positions"]').select('Yard Work' , {force:true});
           }
-            cy.get('[data-cy="positions"]').select('Yard Work',{force: true});
+            cy.get('[data-cy="positions"]').select('Yard Work' ,{force:true});
         });
         cy.get('[data-cy="agree"]')
         .then((x)=>{
           if(x.value === undefined){
-            cy.get('input[type="checkbox"]').click();
+            cy.get('input[type="checkbox"]').click({force:true});
           }
-          cy.get('input[type="checkbox"]').click();
+          cy.get('input[type="checkbox"]').click({force:true});
           // cy.get('[data-cy="agree"]').checked = true;
         })
           

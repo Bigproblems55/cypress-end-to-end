@@ -32,15 +32,17 @@ describe('form spec', () => {
         // })
         cy.get('[data-cy="name"]').then((x)=>{
           if(x.value === undefined){
+            cy.get('[data-cy="name"]').clear(),{force:true};
             x.value = 'ffa';
           }else{
             if(x.value == 'ffa'){
               cy.get('[data-cy="name"]').should("have.value","ffa");
             }
           }
+          // cy.get('[data-cy="name"]').clear();
           cy.get('[data-cy="name"]').should('not.be.disabled');
-          cy.get('[data-cy="name"]').clear();
-          cy.get('[data-cy="name"]').type('ffa');
+          
+          cy.get('[data-cy="name"]').type('ffa',{force:true});
          
           
         });
@@ -52,7 +54,7 @@ describe('form spec', () => {
           }
           cy.get('[data-cy="email"]').should('not.be.disabled');
           // cy.get('[data-cy="email"]').clear();
-          cy.get('[data-cy="email"]').type('ffa@frogs.com');
+          cy.get('[data-cy="email"]').type('ffa@frogs.com',{force:true});
         });
         
         cy.get('[data-cy="motivation"]')
@@ -64,7 +66,7 @@ describe('form spec', () => {
           }
           cy.get('[data-cy="motivation"]').should('not.be.disabled');
           cy.get('[data-cy="motivation"]').clear();
-          cy.get('[data-cy="motivation"]').type("I am motivated and know everything there is to know");
+          cy.get('[data-cy="motivation"]').type("I am motivated and know everything there is to know",{force:true});
           
           
         });
@@ -73,12 +75,15 @@ describe('form spec', () => {
           if(x === undefined){
             x.value = 'Yard Work';
           }
-            cy.get('[data-cy="positions"]').select('Yard Work');
+            cy.get('[data-cy="positions"]').select('Yard Work',{force: true});
         });
         cy.get('[data-cy="agree"]')
         .then((x)=>{
-          
-          cy.get('[data-cy="agree"]').checked = true;
+          if(x.value === undefined){
+            cy.get('input[type="checkbox"]').click();
+          }
+          cy.get('input[type="checkbox"]').click();
+          // cy.get('[data-cy="agree"]').checked = true;
         })
           
         cy.screenshot('my-project-img');
